@@ -1,8 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 
 export default function Navigation() {
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+  
   return (
     <nav style={{
       position: 'relative',
@@ -31,36 +34,41 @@ export default function Navigation() {
           { name: 'About', path: '/about' },
           { name: 'Courses', path: '/courses' }
         ].map((item) => (
-          <Link 
+          <div 
             key={item.path}
-            href={item.path}
             style={{
-              color: '#00ff41',
-              textDecoration: 'none',
               position: 'relative',
               padding: '0.5rem 0',
-              fontSize: '1rem',
-              textTransform: 'uppercase',
-              letterSpacing: '1px',
-              '::after': {
-                content: '""',
+            }}
+            onMouseEnter={() => setHoveredLink(item.path)}
+            onMouseLeave={() => setHoveredLink(null)}
+          >
+            <Link 
+              href={item.path}
+              style={{
+                color: '#00ff41',
+                textDecoration: 'none',
+                fontSize: '1rem',
+                textTransform: 'uppercase',
+                letterSpacing: '1px',
+              }}
+            >
+              {item.name}
+            </Link>
+            <div 
+              style={{
                 position: 'absolute',
                 bottom: 0,
                 left: 0,
                 width: '100%',
                 height: '2px',
                 backgroundColor: '#00ff41',
-                transform: 'scaleX(0)',
+                transform: hoveredLink === item.path ? 'scaleX(1)' : 'scaleX(0)',
                 transition: 'transform 0.3s ease',
                 boxShadow: '0 0 10px rgba(0, 255, 65, 0.5)'
-              },
-              ':hover::after': {
-                transform: 'scaleX(1)'
-              }
-            }}
-          >
-            {item.name}
-          </Link>
+              }}
+            />
+          </div>
         ))}
       </div>
     </nav>
