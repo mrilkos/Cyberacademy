@@ -201,7 +201,7 @@ export default function CoursesPage() {
               <p className="text-gray-300 mb-2">{course.description}</p>
               {/* What you'll learn */}
               <ul className="mb-2 list-disc list-inside text-gray-400 text-sm">
-                {course.learn.map((item, idx) => (
+                {course.learn.map((item: string, idx: number) => (
                   <li key={idx}>{item}</li>
                 ))}
               </ul>
