@@ -163,6 +163,22 @@ function useRipple() {
 
 export default function Home() {
   const createRipple = useRipple();
+  // Card tilt effect (if present)
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * 8;
+    const rotateY = ((x - centerX) / centerX) * -8;
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+  };
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+  };
   return (
     <div className="hacker-bg relative overflow-x-hidden">
       <MatrixRain />
@@ -244,7 +260,7 @@ export default function Home() {
         <h2 className="text-2xl font-bold mb-6 text-center mono-heading">Featured Courses</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featuredCourses.map((course) => (
-            <div key={course.id} className="bg-black rounded-lg p-6 flex flex-col items-start shadow-lg hover:shadow-2xl hover:-translate-y-1 transition group relative glass hacker-glow gradient-border">
+            <div key={course.id} className="bg-black rounded-lg p-6 flex flex-col items-start shadow-lg hover:shadow-2xl hover:-translate-y-1 transition group relative glass hacker-glow gradient-border" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
               {/* Best Seller Badge */}
               {course.bestSeller && (
                 <span className="absolute top-4 right-4 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded">Best Seller</span>

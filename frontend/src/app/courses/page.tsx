@@ -129,7 +129,8 @@ export default function CoursesPage() {
     }
   };
   // Card tilt effect
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, card: HTMLDivElement) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -139,7 +140,8 @@ export default function CoursesPage() {
     const rotateY = ((x - centerX) / centerX) * -8;
     card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
   };
-  const handleMouseLeave = (card: HTMLDivElement) => {
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
     card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
   };
   return (
@@ -161,8 +163,8 @@ export default function CoursesPage() {
               key={course.id}
               className="bg-gray-800 rounded-lg p-6 flex flex-col items-start shadow-lg hover:shadow-2xl transition group relative glass glow-green"
               onMouseEnter={playHoverSound}
-              onMouseMove={e => handleMouseMove(e, e.currentTarget)}
-              onMouseLeave={e => handleMouseLeave(e.currentTarget)}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
               style={{ transition: 'transform 0.2s cubic-bezier(.25,.8,.25,1)' }}
             >
               {/* Best Seller Badge */}
