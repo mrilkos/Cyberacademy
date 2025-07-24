@@ -12,7 +12,24 @@ type Particle = {
   animationDelay: number;
 };
 
-const courses = [
+type Course = {
+  id: number;
+  title: string;
+  duration: string;
+  difficulty: string;
+  price: string;
+  description: string;
+  image: string;
+  instructor: { name: string };
+  rating: number;
+  reviews: number;
+  bestSeller: boolean;
+  category: string;
+  learn: string[];
+  isNew?: boolean;
+};
+
+const courses: Course[] = [
   {
     id: 1,
     title: "Ethical Hacking Basics",
