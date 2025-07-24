@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 
 const courses = [
@@ -73,9 +72,18 @@ function InstructorIcon() {
   );
 }
 
+type Particle = {
+  width: number;
+  height: number;
+  top: number;
+  left: number;
+  animationDuration: number;
+  animationDelay: number;
+};
+
 // Parallax and particles
 function ParticlesBG() {
-  const [particles, setParticles] = useState<any[]>([]);
+  const [particles, setParticles] = useState<Particle[]>([]);
   useEffect(() => {
     const arr = Array.from({ length: 30 }, () => ({
       width: 8 + Math.random() * 16,
@@ -89,9 +97,9 @@ function ParticlesBG() {
   }, []);
   return (
     <div className="pointer-events-none absolute inset-0 z-0">
-      {particles.map((p, i) => (
+      {particles.map((p) => (
         <div
-          key={i}
+          key={`${p.width}-${p.height}-${p.top}-${p.left}`}
           className="absolute rounded-full bg-green-400 opacity-20 animate-pulse"
           style={{
             width: `${p.width}px`,

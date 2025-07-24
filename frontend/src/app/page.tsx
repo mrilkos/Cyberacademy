@@ -101,7 +101,7 @@ function ValueIcon({ icon, label }: { icon: React.ReactNode; label: string }) {
 
 // Add a simple particle animation component
 function ParticlesBG() {
-  const [particles, setParticles] = useState<any[]>([]);
+  const [particles, setParticles] = useState<Particle[]>([]);
   useEffect(() => {
     const arr = Array.from({ length: 30 }, () => ({
       width: 8 + Math.random() * 16,
@@ -115,9 +115,9 @@ function ParticlesBG() {
   }, []);
   return (
     <div className="pointer-events-none absolute inset-0 z-0">
-      {particles.map((p, i) => (
+      {particles.map((p) => (
         <div
-          key={i}
+          key={`${p.width}-${p.height}-${p.top}-${p.left}`}
           className="absolute rounded-full bg-green-400 opacity-20 animate-pulse"
           style={{
             width: `${p.width}px`,
@@ -212,9 +212,9 @@ export default function Home() {
       <section className="max-w-6xl mx-auto py-12 px-6">
         <h2 className="text-3xl font-bold text-center text-white mb-8 mono-heading">What Our Students Say</h2>
         <div className="flex flex-col md:grid md:grid-cols-3 gap-8">
-          {testimonials.map((t, idx) => (
+          {testimonials.map((t) => (
             <div
-              key={idx}
+              key={t.name}
               className="relative glass rounded-2xl p-8 flex flex-col items-center shadow-2xl border border-gray-700 transition-transform duration-300 hover:-translate-y-2 group"
               style={{ minHeight: '340px' }}
             >
@@ -234,7 +234,7 @@ export default function Home() {
       <section className="w-full max-w-6xl mx-auto mt-12 px-6">
         <h2 className="text-2xl font-bold mb-6 text-center mono-heading">Featured Courses</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {featuredCourses.map((course, idx) => (
+          {featuredCourses.map((course) => (
             <div key={course.id} className="bg-black rounded-lg p-6 flex flex-col items-start shadow-lg hover:shadow-2xl hover:-translate-y-1 transition group relative glass hacker-glow gradient-border">
               {/* Best Seller Badge */}
               {course.bestSeller && (
