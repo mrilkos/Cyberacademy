@@ -5,6 +5,15 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import MatrixRain from "./MatrixRain";
 
+type Particle = {
+  width: number;
+  height: number;
+  top: number;
+  left: number;
+  animationDuration: number;
+  animationDelay: number;
+};
+
 const featuredCourses = [
   {
     id: 1,
