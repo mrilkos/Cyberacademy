@@ -95,7 +95,7 @@ export default function Home() {
           </a>
           
           <a
-            href="/test"
+            href="/about"
             style={{
               padding: '0.875rem 2rem',
               color: '#00ff41',
@@ -107,16 +107,16 @@ export default function Home() {
               textTransform: 'uppercase',
               letterSpacing: '1px',
               fontSize: '0.9rem',
-              ...(hoveredButton === 'test' ? {
+              ...(hoveredButton === 'about' ? {
                 backgroundColor: 'rgba(0, 255, 65, 0.1)'
               } : {
                 backgroundColor: 'transparent'
               })
             }}
-            onMouseOver={() => setHoveredButton('test')}
+            onMouseOver={() => setHoveredButton('about')}
             onMouseOut={() => setHoveredButton('')}
           >
-            Test Page
+            About Us
           </a>
         </div>
       </div>
