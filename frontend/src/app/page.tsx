@@ -1,4 +1,9 @@
+'use client';
+
+import { useState } from 'react';
+
 export default function Home() {
+  const [hoveredButton, setHoveredButton] = useState('');
   return (
     <div style={{
       minHeight: '100vh',
@@ -67,8 +72,6 @@ export default function Home() {
             href="/courses"
             style={{
               padding: '0.875rem 2rem',
-              backgroundColor: '#00ff41',
-              color: '#000',
               borderRadius: '4px',
               fontWeight: '600',
               textDecoration: 'none',
@@ -76,16 +79,17 @@ export default function Home() {
               border: '2px solid #00ff41',
               textTransform: 'uppercase',
               letterSpacing: '1px',
-              fontSize: '0.9rem'
+              fontSize: '0.9rem',
+              ...(hoveredButton === 'explore' ? {
+                backgroundColor: 'transparent',
+                color: '#00ff41'
+              } : {
+                backgroundColor: '#00ff41',
+                color: '#000'
+              })
             }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
-              e.currentTarget.style.color = '#00ff41';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = '#00ff41';
-              e.currentTarget.style.color = '#000';
-            }}
+            onMouseOver={() => setHoveredButton('explore')}
+            onMouseOut={() => setHoveredButton('')}
           >
             Explore Courses
           </a>
@@ -94,7 +98,6 @@ export default function Home() {
             href="/test"
             style={{
               padding: '0.875rem 2rem',
-              backgroundColor: 'transparent',
               color: '#00ff41',
               border: '2px solid #00ff41',
               borderRadius: '4px',
@@ -103,14 +106,15 @@ export default function Home() {
               transition: 'all 0.3s ease',
               textTransform: 'uppercase',
               letterSpacing: '1px',
-              fontSize: '0.9rem'
+              fontSize: '0.9rem',
+              ...(hoveredButton === 'test' ? {
+                backgroundColor: 'rgba(0, 255, 65, 0.1)'
+              } : {
+                backgroundColor: 'transparent'
+              })
             }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(0, 255, 65, 0.1)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
-            }}
+            onMouseOver={() => setHoveredButton('test')}
+            onMouseOut={() => setHoveredButton('')}
           >
             Test Page
           </a>
