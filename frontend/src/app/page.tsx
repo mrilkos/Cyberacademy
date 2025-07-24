@@ -1,35 +1,45 @@
-"use client";
-
-import { useEffect } from "react";
-
 export default function Home() {
-  // Simple check to ensure client-side rendering
-  useEffect(() => {
-    console.log("Home page mounted");
-  }, []);
-
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-4">
-      <h1 className="text-4xl font-bold text-lime-500 mb-4">
-        Welcome to Cyber Academy
+    <div style={{
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'black',
+      color: 'white',
+      padding: '2rem',
+      textAlign: 'center'
+    }}>
+      <h1 style={{
+        fontSize: '2.5rem',
+        fontWeight: 'bold',
+        marginBottom: '1rem',
+        color: '#00ff41'
+      }}>
+        Cyber Academy
       </h1>
-      <p className="text-xl text-gray-300 mb-8">
-        Start your cybersecurity journey today
+      <p style={{
+        fontSize: '1.25rem',
+        marginBottom: '2rem',
+        color: '#ccc'
+      }}>
+        Welcome to Cyber Academy
       </p>
-      <div className="flex gap-4">
-        <a
-          href="/courses"
-          className="px-6 py-3 bg-lime-500 text-black font-medium rounded-md hover:bg-lime-400 transition-colors"
-        >
-          Explore Courses
-        </a>
-        <a
-          href="#"
-          className="px-6 py-3 border border-lime-500 text-lime-500 font-medium rounded-md hover:bg-lime-500/10 transition-colors"
-        >
-          Learn More
-        </a>
-      </div>
-    </main>
+      <a
+        href="/test"
+        style={{
+          padding: '0.75rem 1.5rem',
+          backgroundColor: '#00ff41',
+          color: 'black',
+          borderRadius: '0.375rem',
+          fontWeight: '500',
+          textDecoration: 'none',
+          transition: 'background-color 0.2s'
+        }}
+      >
+        Go to Test Page
+      </a>
+    </div>
   );
 }
