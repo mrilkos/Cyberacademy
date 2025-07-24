@@ -144,7 +144,7 @@ function ParticlesBG() {
 
 // Ripple effect logic
 function useRipple() {
-  const createRipple = (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+  const createRipple = (event: React.MouseEvent<HTMLElement>) => {
     const button = event.currentTarget;
     const circle = document.createElement("span");
     const diameter = Math.max(button.clientWidth, button.clientHeight);
