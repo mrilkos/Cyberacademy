@@ -1,5 +1,7 @@
 'use client';
 
+import MatrixRain from '../MatrixRain';
+
 export default function AboutPage() {
   return (
     <div style={{
@@ -9,12 +11,13 @@ export default function AboutPage() {
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: '#000',
-      color: '#fff',
+      color: '#00ff41',
       padding: '2rem',
       fontFamily: 'monospace',
       position: 'relative',
       overflow: 'hidden'
     }}>
+      <MatrixRain />
       {/* Background elements */}
       <div style={{
         position: 'absolute',
@@ -37,19 +40,29 @@ export default function AboutPage() {
         boxShadow: '0 0 20px rgba(0, 255, 65, 0.3)'
       }}>
         <h1 style={{
-          fontSize: '2.5rem',
+          fontSize: '3rem',
           fontWeight: 'bold',
           marginBottom: '2rem',
           color: '#00ff41',
           textAlign: 'center',
-          textShadow: '0 0 10px rgba(0, 255, 65, 0.5)'
+          textShadow: '0 0 15px #00ff41',
+          letterSpacing: '2px',
+          position: 'relative',
+          zIndex: 10
         }}>
           ABOUT US
         </h1>
         
         <div style={{
           marginBottom: '2rem',
-          lineHeight: '1.8'
+          lineHeight: '1.8',
+          position: 'relative',
+          zIndex: 10,
+          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          padding: '2rem',
+          borderRadius: '8px',
+          border: '1px solid #00ff41',
+          boxShadow: '0 0 20px rgba(0, 255, 65, 0.3)'
         }}>
           <p style={{ marginBottom: '1.5rem' }}>
             Welcome to Cyber Academy, where we're passionate about cybersecurity education and empowering the next generation of security professionals.
@@ -58,7 +71,10 @@ export default function AboutPage() {
           <h2 style={{
             color: '#00ff41',
             margin: '1.5rem 0 1rem',
-            fontSize: '1.5rem'
+            fontSize: '1.5rem',
+            borderBottom: '1px solid #00ff41',
+            paddingBottom: '0.5rem',
+            display: 'inline-block'
           }}>Our Mission</h2>
           <p style={{ marginBottom: '1.5rem' }}>
             To provide accessible, high-quality cybersecurity education that equips individuals with the skills needed to protect digital assets and combat cyber threats in an increasingly connected world.
@@ -67,12 +83,16 @@ export default function AboutPage() {
           <h2 style={{
             color: '#00ff41',
             margin: '1.5rem 0 1rem',
-            fontSize: '1.5rem'
+            fontSize: '1.5rem',
+            borderBottom: '1px solid #00ff41',
+            paddingBottom: '0.5rem',
+            display: 'inline-block'
           }}>Our Approach</h2>
           <ul style={{
             listStyleType: 'none',
             padding: 0,
-            marginBottom: '1.5rem'
+            marginBottom: '1.5rem',
+            paddingLeft: '1rem'
           }}>
             <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start' }}>
               <span style={{ color: '#00ff41', marginRight: '0.5rem' }}>▹</span>
@@ -92,7 +112,11 @@ export default function AboutPage() {
             </li>
           </ul>
           
-          <p style={{ marginBottom: '1.5rem' }}>
+          <p style={{ 
+            marginBottom: '1.5rem',
+            fontSize: '1.1rem',
+            lineHeight: '1.8'
+          }}>
             Join us on our mission to create a more secure digital future.
           </p>
         </div>

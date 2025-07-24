@@ -3,6 +3,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --foreground-rgb: 224, 224, 224;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 10, 5;
+  --cyber-green: #00ff41;
+  --cyber-dark: #0a0a0a;
 }
 
 @theme inline {
@@ -16,6 +21,75 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+  }
+  
+  .drop-shadow-glow {
+    filter: drop-shadow(0 0 5px rgba(0, 255, 65, 0.5));
+  }
+  
+  .bg-cyber-dark {
+    background-color: var(--cyber-dark);
+  }
+  
+  .text-cyber-green {
+    color: var(--cyber-green);
+  }
+  
+  .border-cyber-green {
+    border-color: var(--cyber-green);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-black text-gray-100 font-mono;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+  
+  a {
+    @apply transition-colors duration-300;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--cyber-green);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00cc36;
   }
 }
 
