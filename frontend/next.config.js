@@ -6,13 +6,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  output: 'standalone',
+  reactStrictMode: true,
+  swcMinify: true,
 };
 
-module.exports = {
-  images: {
-    domains: ['images.unsplash.com'],
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-}; 
+module.exports = nextConfig;
