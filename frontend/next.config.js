@@ -8,7 +8,7 @@ const nextConfig = {
   },
   output: 'standalone',
   reactStrictMode: true,
-  swcMinify: true,
+  compress: true,
 };
 
 module.exports = nextConfig;
